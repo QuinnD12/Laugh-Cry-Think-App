@@ -11,6 +11,7 @@
 		390CCCF72B2B6B700083B338 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390CCCF62B2B6B700083B338 /* ContentView.swift */; };
 		390CCCF92B2B6B710083B338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 390CCCF82B2B6B710083B338 /* Assets.xcassets */; };
 		390CCCFC2B2B6B710083B338 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 390CCCFB2B2B6B710083B338 /* Preview Assets.xcassets */; };
+		3940A0992B3346E400369DFC /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3940A0982B3346E400369DFC /* YouTubePlayerKit */; };
 		397005D12B30B6E6005153CE /* Temp YouTube View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397005D02B30B6E6005153CE /* Temp YouTube View.swift */; };
 		E7FD18282B30A6CB00810B84 /* ThinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FD18272B30A6CB00810B84 /* ThinkView.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3940A0992B3346E400369DFC /* YouTubePlayerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +91,9 @@
 			dependencies = (
 			);
 			name = "Laugh Cry Think App";
+			packageProductDependencies = (
+				3940A0982B3346E400369DFC /* YouTubePlayerKit */,
+			);
 			productName = "Laugh Cry Think App";
 			productReference = 390CCCF12B2B6B700083B338 /* Laugh Cry Think App.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 390CCCE82B2B6B700083B338;
+			packageReferences = (
+				3940A0972B3346E400369DFC /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
+			);
 			productRefGroup = 390CCCF22B2B6B700083B338 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -352,6 +360,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3940A0972B3346E400369DFC /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3940A0982B3346E400369DFC /* YouTubePlayerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3940A0972B3346E400369DFC /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
+			productName = YouTubePlayerKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 390CCCE92B2B6B700083B338 /* Project object */;
 }
