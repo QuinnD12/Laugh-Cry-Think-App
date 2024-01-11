@@ -36,10 +36,6 @@ struct YouTubeTestView: View {
     }
 }
 
-#Preview {
-    YouTubeTestView()
-}
-
 
 enum NetworkError: Error {
     case invalidURL
