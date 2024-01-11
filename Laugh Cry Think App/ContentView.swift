@@ -4,7 +4,6 @@
 //
 //  Created by Quinn B. Davis on 12/14/23.
 //
-
 import SwiftUI
 
 struct Triangle: Shape {
@@ -26,34 +25,54 @@ struct Triangle: Shape {
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            HStack{
-                Triangle()
-                            .fill(Color.red)
-                            .frame(width: 100, height: 100)
-                            .shadow(radius: 5)
-                            .rotationEffect(.degrees(-90))
-                Circle()
-                    .frame(width: 150, height: 150)
-                Triangle()
-                            .fill(Color.red)
-                            .frame(width: 100, height: 100)
-                            .shadow(radius: 5)
-                            .rotationEffect(.degrees(90))
-               
-                
-                    
+        ZStack {
+            Color.pastelPurple
+                .edgesIgnoringSafeArea(.all)
+
+            VStack {
+                HStack {
+                    Triangle()
+                        .fill(Color.blue)
+                        .frame(width: 100, height: 100)
+                        .shadow(radius: 5)
+                        .rotationEffect(.degrees(-90))
+                    Circle()
+                        .frame(width: 150, height: 150)
+                    Triangle()
+                        .fill(Color.blue)
+                        .frame(width: 100, height: 100)
+                        .shadow(radius: 5)
+                        .rotationEffect(.degrees(90))
+                }
+                Text("January 11, 2024")
+                    .font(.title2)
+                    .bold()
+                Rectangle()
+                    .foregroundColor(.blue)
+                    .cornerRadius(30)
+                    .padding()
+                Rectangle()
+                    .foregroundColor(.blue)
+                    .cornerRadius(30)
+                    .padding()
+                Rectangle()
+                    .foregroundColor(.blue)
+                    .cornerRadius(30)
+                    .padding()
+
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, world!")
             }
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            .padding()
         }
-        .padding()
     }
-    
 }
-    
+
+extension Color {
+    static let pastelPurple = Color(red: 206/255, green: 156/255, blue: 236/255)
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
