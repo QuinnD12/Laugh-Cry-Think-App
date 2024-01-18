@@ -33,7 +33,7 @@ struct YouTubeTestView: View {
         if done {
             YouTubePlayerView(
                 YouTubePlayer(source: .video(id: videoID ?? ""), configuration: .init(
-                        showRelatedVideos: false
+                    loopEnabled: true
                 ))
             )
         }
