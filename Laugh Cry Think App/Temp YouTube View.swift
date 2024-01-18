@@ -21,35 +21,30 @@ struct YouTubeTestView: View {
                 } catch NetworkError.invalidURL {
                     print("Invalid URL")
                 } catch NetworkError.invalidResponse {
-                    print("Invalid Response")
+                    print("Invalid Response/Quota")
                 } catch NetworkError.invalidData {
                     print("Invalid Data")
                 } catch {
-                    print("Unkown Error")
+                    print("Unknown Error/Connection")
                 }
             }
         }
         
         if done {
-            YouTubePlayerView(YouTubePlayer(source: .video(id: videoID ?? "")))
+            YouTubePlayerView(
+                YouTubePlayer(source: .video(id: videoID ?? ""), configuration: .init(
+                    loopEnabled: true
+                ))
+            )
         }
     }
-}
-
-
-enum NetworkError: Error {
-    case invalidURL
-    case invalidResponse
-    case invalidData
 }
 
 func getVideoID(APIKey: String = "AIzaSyDEu0gqC_zfELf-iGhsmfiH1IZ_KD73Vng") async throws -> String {
     
     let date = randRangeDate(startDate: "2022-05-01T12:00:00-05:00", endDate: "2024-01-08T12:00:00-05:00")
     
-    print(date)
-    
-    let endpoint = "https://www.googleapis.com/youtube/v3/search?key=\(APIKey)&channelId=UC_zEzzq54Rm0iy7lmmZbCIg&maxResults=1&safeSearch=strict&type=video&videoDuration=short&publishedBefore=\(lastWeek(date))&publishedAfter=\(date)"
+    let endpoint = "https://www.googleapis.com/youtube/v3/search?key=\(APIKey)&channelId=UC_zEzzq54Rm0iy7lmmZbCIg&maxResults=1&safeSearch=strict&type=video&videoDuration=short&publishedBefore=\(timeAhead(date))&publishedAfter=\(date)"
     
     guard let url = URL(string: endpoint) else {
         throw NetworkError.invalidURL
@@ -64,10 +59,21 @@ func getVideoID(APIKey: String = "AIzaSyDEu0gqC_zfELf-iGhsmfiH1IZ_KD73Vng") asyn
     do {
         let decoder = JSONDecoder()
         
-        return try decoder.decode(Response.self, from: data).items[0].id.videoId
+        let items = try decoder.decode(Response.self, from: data).items
+        if items.count > 0 {
+            return items[0].id.videoId
+        } else {
+            return try await getVideoID()
+        }
     } catch {
         throw NetworkError.invalidData
     }
+}
+
+enum NetworkError: Error {
+    case invalidURL
+    case invalidResponse
+    case invalidData
 }
 
 struct Response: Codable {
@@ -114,14 +120,14 @@ func randRangeDate(startDate: String, endDate: String) -> String {
     return RFC3339DateFormatter.string(from: date)
 }
 
-func lastWeek(_ date: String) -> String {
+func timeAhead(_ date: String) -> String {
     let RFC3339DateFormatter = DateFormatter()
     RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
     RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
     RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
     
     var dateRFC3339 = RFC3339DateFormatter.date(from: date)
-    dateRFC3339 = dateRFC3339?.addingTimeInterval(604800)
+    dateRFC3339 = dateRFC3339!.addingTimeInterval(151200)
     
     return RFC3339DateFormatter.string(from: dateRFC3339!)
 }
