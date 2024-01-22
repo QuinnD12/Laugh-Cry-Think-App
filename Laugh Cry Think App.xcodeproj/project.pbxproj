@@ -12,7 +12,8 @@
 		390CCCF92B2B6B710083B338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 390CCCF82B2B6B710083B338 /* Assets.xcassets */; };
 		390CCCFC2B2B6B710083B338 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 390CCCFB2B2B6B710083B338 /* Preview Assets.xcassets */; };
 		3940A0992B3346E400369DFC /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3940A0982B3346E400369DFC /* YouTubePlayerKit */; };
-		397005D12B30B6E6005153CE /* Temp YouTube View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397005D02B30B6E6005153CE /* Temp YouTube View.swift */; };
+		395F60C62B5994240020E4D1 /* LaughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395F60C52B5994240020E4D1 /* LaughView.swift */; };
+		395F60C82B59949A0020E4D1 /* YouTubeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */; };
 		E7FD18282B30A6CB00810B84 /* ThinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FD18272B30A6CB00810B84 /* ThinkView.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,7 +23,8 @@
 		390CCCF62B2B6B700083B338 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		390CCCF82B2B6B710083B338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		390CCCFB2B2B6B710083B338 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		397005D02B30B6E6005153CE /* Temp YouTube View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Temp YouTube View.swift"; sourceTree = "<group>"; };
+		395F60C52B5994240020E4D1 /* LaughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughView.swift; sourceTree = "<group>"; };
+		395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPI.swift; sourceTree = "<group>"; };
 		E7FD18272B30A6CB00810B84 /* ThinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,9 +60,10 @@
 			isa = PBXGroup;
 			children = (
 				390CCCF42B2B6B700083B338 /* LaughCryThinkApp.swift */,
+				395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */,
 				390CCCF62B2B6B700083B338 /* ContentView.swift */,
+				395F60C52B5994240020E4D1 /* LaughView.swift */,
 				E7FD18272B30A6CB00810B84 /* ThinkView.swift */,
-				397005D02B30B6E6005153CE /* Temp YouTube View.swift */,
 				390CCCF82B2B6B710083B338 /* Assets.xcassets */,
 				390CCCFA2B2B6B710083B338 /* Preview Content */,
 			);
@@ -151,9 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				397005D12B30B6E6005153CE /* Temp YouTube View.swift in Sources */,
 				E7FD18282B30A6CB00810B84 /* ThinkView.swift in Sources */,
+				395F60C62B5994240020E4D1 /* LaughView.swift in Sources */,
 				390CCCF72B2B6B700083B338 /* ContentView.swift in Sources */,
+				395F60C82B59949A0020E4D1 /* YouTubeAPI.swift in Sources */,
 				390CCCF52B2B6B700083B338 /* LaughCryThinkApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
