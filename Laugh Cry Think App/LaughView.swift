@@ -16,12 +16,14 @@ struct LaughView: View {
     var body: some View {
         VStack {
             Text("Laugh")
+                .font(.custom("Futura Bold", size: 70))
             
             YouTubePlayerView(
                 YouTubePlayer(source: .video(id: placeHolderID ?? ""), configuration: .init(
                     loopEnabled: true
                 ))
-            )
+            ).clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
+                .frame(width: 350, height: 500)
             
             TextField("Thoughts Placeholder", text: $laughText)
         }
