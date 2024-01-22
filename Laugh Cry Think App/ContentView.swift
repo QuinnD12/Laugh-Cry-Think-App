@@ -23,24 +23,27 @@ struct MainView: View {
             ZStack {
                 Color.pastelPurple
                     .edgesIgnoringSafeArea(.all)
-
+                
                 VStack {
                     HStack {
                         Triangle()
                             .fill(Color.softPink)
                             .frame(width: 100, height: 100)
-                            .shadow(radius: 5)
+                            .shadow(color: Color.softBlue.opacity(0.4), radius: 5)
                             .rotationEffect(.degrees(-90))
                         Image("AppLogo")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 150, height: 150)
-                                    .clipShape(Circle())
-                                    .padding()
+                            .resizable()
+                            .frame(width: 150, height: 140)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle().stroke(Color.softPink, lineWidth: 3)
+                            )
+                            .shadow(color: Color.white.opacity(0.5), radius: 3)
+                            .padding()
                         Triangle()
                             .fill(Color.softPink)
                             .frame(width: 100, height: 100)
-                            .shadow(radius: 5)
+                            .shadow(color: Color.softBlue.opacity(0.4), radius: 5)
                             .rotationEffect(.degrees(90))
                     }
                     Text("January 11, 2024")
@@ -53,36 +56,40 @@ struct MainView: View {
                             Text("LAUGH")
                                 .font(.title)
                                 .bold()
-                                .foregroundColor(.softBlue)
+                                .foregroundColor(.white)
                                 .frame(width: 300, height: 75, alignment: .center)
                                 .padding()
                                 .background(Color.softPink)
                                 .cornerRadius(30)
+                                .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
+                            
                         }
                     }
                     .padding()
-
+                    
                     NavigationLink(destination: ContentView()) {
                         Text("CRY")
                             .font(.title)
                             .bold()
-                            .foregroundColor(.softBlue)
+                            .foregroundColor(.white)
                             .frame(width: 300, height: 75, alignment: .center)
                             .padding()
                             .background(Color.softPink)
                             .cornerRadius(30)
+                            .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
                     }
                     .padding()
-
+                    
                     NavigationLink(destination: ContentView()) {
                         Text("THINK")
                             .font(.title)
                             .bold()
-                            .foregroundColor(.softBlue)
+                            .foregroundColor(.white)
                             .frame(width: 300, height: 75, alignment: .center)
                             .padding()
                             .background(Color.softPink)
                             .cornerRadius(30)
+                            .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
                     }
                     .padding()
                 }
@@ -99,12 +106,12 @@ struct ContentView: View {
                 .tabItem {
                     Label("Streak", systemImage: "flame.fill")
                 }
-
+            
             Text("Calendar View")
                 .tabItem {
                     Label("Calendar", systemImage: "calendar")
                 }
-
+            
             Text("About View")
                 .tabItem {
                     Label("About", systemImage: "info.circle")
