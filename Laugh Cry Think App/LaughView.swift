@@ -14,21 +14,27 @@ struct LaughView: View {
     var placeHolderID: String? = "NpEaa2P7qZI"
     
     var body: some View {
-        VStack {
-            Text("Laugh")
+        ZStack{
+            Color.pastelPurple
+                .edgesIgnoringSafeArea(.all)
             
-            YouTubePlayerView(
-                YouTubePlayer(source: .video(id: placeHolderID ?? ""), configuration: .init(
-                    loopEnabled: true
-                ))
-            )
-            
-            TextField("Thoughts Placeholder", text: $laughText)
+            VStack {
+                YouTubePlayerView(
+                    YouTubePlayer(source: .video(id: placeHolderID ?? ""), configuration: .init(
+                        loopEnabled: true
+                    ))
+                )
+                
+                TextField("Thoughts Placeholder", text: $laughText)
+            }
         }
     }
 }
 
-#Preview {
-    LaughView()
+
+struct LaughViewPreviews: PreviewProvider {
+    static var previews: some View {
+        LaughView()
+    }
 }
 

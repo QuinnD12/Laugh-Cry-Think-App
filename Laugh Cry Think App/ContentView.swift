@@ -48,7 +48,7 @@ struct MainView: View {
                         .foregroundColor(.white)
                         .bold()
                     
-                    NavigationLink(destination: ContentView()) {
+                    NavigationLink(destination: LaughView()) {
                         HStack{
                             Text("LAUGH")
                                 .font(.title)
