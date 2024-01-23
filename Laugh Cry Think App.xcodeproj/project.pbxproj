@@ -14,6 +14,7 @@
 		3940A0992B3346E400369DFC /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3940A0982B3346E400369DFC /* YouTubePlayerKit */; };
 		395F60C62B5994240020E4D1 /* LaughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395F60C52B5994240020E4D1 /* LaughView.swift */; };
 		395F60C82B59949A0020E4D1 /* YouTubeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */; };
+		BE6385AD2B5EDAB000F89452 /* CryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6385AC2B5EDAB000F89452 /* CryView.swift */; };
 		E7FD18282B30A6CB00810B84 /* ThinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FD18272B30A6CB00810B84 /* ThinkView.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		390CCCFB2B2B6B710083B338 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		395F60C52B5994240020E4D1 /* LaughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughView.swift; sourceTree = "<group>"; };
 		395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPI.swift; sourceTree = "<group>"; };
+		BE6385AC2B5EDAB000F89452 /* CryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryView.swift; sourceTree = "<group>"; };
 		E7FD18272B30A6CB00810B84 /* ThinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +64,7 @@
 				390CCCF42B2B6B700083B338 /* LaughCryThinkApp.swift */,
 				395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */,
 				390CCCF62B2B6B700083B338 /* ContentView.swift */,
+				BE6385AC2B5EDAB000F89452 /* CryView.swift */,
 				395F60C52B5994240020E4D1 /* LaughView.swift */,
 				E7FD18272B30A6CB00810B84 /* ThinkView.swift */,
 				390CCCF82B2B6B710083B338 /* Assets.xcassets */,
@@ -159,6 +162,7 @@
 				390CCCF72B2B6B700083B338 /* ContentView.swift in Sources */,
 				395F60C82B59949A0020E4D1 /* YouTubeAPI.swift in Sources */,
 				390CCCF52B2B6B700083B338 /* LaughCryThinkApp.swift in Sources */,
+				BE6385AD2B5EDAB000F89452 /* CryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
