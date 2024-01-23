@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct CryView: View {
     
     @State private var poem: Poetry?
     @State private var crynotes = ""
@@ -80,9 +80,9 @@ enum GHError: Error {
     case invalidData
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct CryView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CryView()
     }
 }
 
