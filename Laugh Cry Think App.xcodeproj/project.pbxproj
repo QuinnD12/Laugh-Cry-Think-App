@@ -68,6 +68,7 @@
 				395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */,
 				392D942A2B5ED7C900AC5C2E /* Styles.swift */,
 				390CCCF62B2B6B700083B338 /* ContentView.swift */,
+				BE6385AC2B5EDAB000F89452 /* CryView.swift */,
 				395F60C52B5994240020E4D1 /* LaughView.swift */,
 				E7FD18272B30A6CB00810B84 /* ThinkView.swift */,
 				390CCCF82B2B6B710083B338 /* Assets.xcassets */,

@@ -26,11 +26,18 @@ struct LaughView: View {
                 .frame(width: 350, height: 500)
             
             TextField("Thoughts Placeholder", text: $laughText)
+                .frame(width: 350, height: 500)
+            
+            TextField("Thoughts Placeholder", text: $laughText)
         }
+    }
     }
 }
 
-#Preview {
-    LaughView()
+
+struct LaughViewPreviews: PreviewProvider {
+    static var previews: some View {
+        LaughView()
+    }
 }
 
