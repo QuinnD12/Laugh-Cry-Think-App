@@ -50,7 +50,7 @@ struct Styles: View {
                 Text("subtitle")
                     .miindFont(size: 20, weight: "black")
                 
-                Text(" lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, magna quis porta volutpat, ante turpis tempor metus, sed pharetra erat felis et mi. Mauris id turpis id elit tempor euismod. Praesent finibus dolor sed auctor semper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed vel pretium mauris. Mauris pulvinar tincidunt suscipit. Curabitur justo ante, egestas ac enim ac, vehicula pretium lectus.")
+                Text("lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, magna quis porta volutpat, ante turpis tempor metus, sed pharetra erat felis et mi. Mauris id turpis id elit tempor euismod. Praesent finibus dolor sed auctor semper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed vel pretium mauris. Mauris pulvinar tincidunt suscipit. Curabitur justo ante, egestas ac enim ac, vehicula pretium lectus.")
                     .miindFont(size: 10)
                     .padding()
             }
