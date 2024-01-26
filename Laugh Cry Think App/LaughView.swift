@@ -32,7 +32,7 @@ struct LaughView: View {
         }
     }
     }
-}
+
 
 
 struct LaughViewPreviews: PreviewProvider {
