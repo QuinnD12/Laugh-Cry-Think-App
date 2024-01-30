@@ -11,10 +11,11 @@
 		390CCCF72B2B6B700083B338 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390CCCF62B2B6B700083B338 /* ContentView.swift */; };
 		390CCCF92B2B6B710083B338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 390CCCF82B2B6B710083B338 /* Assets.xcassets */; };
 		390CCCFC2B2B6B710083B338 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 390CCCFB2B2B6B710083B338 /* Preview Assets.xcassets */; };
+		392D942B2B5ED7C900AC5C2E /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392D942A2B5ED7C900AC5C2E /* Styles.swift */; };
 		3940A0992B3346E400369DFC /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3940A0982B3346E400369DFC /* YouTubePlayerKit */; };
 		395F60C62B5994240020E4D1 /* LaughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395F60C52B5994240020E4D1 /* LaughView.swift */; };
 		395F60C82B59949A0020E4D1 /* YouTubeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */; };
-		BE6385AD2B5EDAB000F89452 /* CryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6385AC2B5EDAB000F89452 /* CryView.swift */; };
+		3976C6472B61787800063F4F /* Nunito-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3976C6462B61787800063F4F /* Nunito-VariableFont_wght.ttf */; };
 		E7FD18282B30A6CB00810B84 /* ThinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FD18272B30A6CB00810B84 /* ThinkView.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,9 +25,10 @@
 		390CCCF62B2B6B700083B338 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		390CCCF82B2B6B710083B338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		390CCCFB2B2B6B710083B338 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		392D942A2B5ED7C900AC5C2E /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		395F60C52B5994240020E4D1 /* LaughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughView.swift; sourceTree = "<group>"; };
 		395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPI.swift; sourceTree = "<group>"; };
-		BE6385AC2B5EDAB000F89452 /* CryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryView.swift; sourceTree = "<group>"; };
+		3976C6462B61787800063F4F /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		E7FD18272B30A6CB00810B84 /* ThinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,8 +63,10 @@
 		390CCCF32B2B6B700083B338 /* Laugh Cry Think App */ = {
 			isa = PBXGroup;
 			children = (
+				3976C6462B61787800063F4F /* Nunito-VariableFont_wght.ttf */,
 				390CCCF42B2B6B700083B338 /* LaughCryThinkApp.swift */,
 				395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */,
+				392D942A2B5ED7C900AC5C2E /* Styles.swift */,
 				390CCCF62B2B6B700083B338 /* ContentView.swift */,
 				BE6385AC2B5EDAB000F89452 /* CryView.swift */,
 				395F60C52B5994240020E4D1 /* LaughView.swift */,
@@ -146,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				390CCCFC2B2B6B710083B338 /* Preview Assets.xcassets in Resources */,
+				3976C6472B61787800063F4F /* Nunito-VariableFont_wght.ttf in Resources */,
 				390CCCF92B2B6B710083B338 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,8 +166,8 @@
 				395F60C62B5994240020E4D1 /* LaughView.swift in Sources */,
 				390CCCF72B2B6B700083B338 /* ContentView.swift in Sources */,
 				395F60C82B59949A0020E4D1 /* YouTubeAPI.swift in Sources */,
+				392D942B2B5ED7C900AC5C2E /* Styles.swift in Sources */,
 				390CCCF52B2B6B700083B338 /* LaughCryThinkApp.swift in Sources */,
-				BE6385AD2B5EDAB000F89452 /* CryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +303,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Laugh Cry Think App/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Laugh-Cry-Think-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -327,6 +333,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Laugh Cry Think App/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Laugh-Cry-Think-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

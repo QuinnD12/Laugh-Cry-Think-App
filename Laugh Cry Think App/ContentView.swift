@@ -31,6 +31,7 @@ struct MainView: View {
                             .frame(width: 100, height: 100)
                             .shadow(color: Color.softBlue.opacity(0.4), radius: 5)
                             .rotationEffect(.degrees(-90))
+                        
                         Image("AppLogo")
                             .resizable()
                             .frame(width: 150, height: 140)
@@ -40,28 +41,28 @@ struct MainView: View {
                             )
                             .shadow(color: Color.white.opacity(0.5), radius: 3)
                             .padding()
+                        
                         Triangle()
                             .fill(Color.softPink)
                             .frame(width: 100, height: 100)
                             .shadow(color: Color.softBlue.opacity(0.4), radius: 5)
                             .rotationEffect(.degrees(90))
                     }
+                    
                     Text("January 11, 2024")
-                        .font(.title2)
                         .foregroundColor(.white)
                         .bold()
+                        .miindFont(size: 20, weight: "bold")
                     
                     NavigationLink(destination: LaughView()) {
                         HStack{
                             Text("LAUGH")
-                                .font(.title)
-                                .bold()
-                                .foregroundColor(.white)
                                 .frame(width: 300, height: 75, alignment: .center)
                                 .padding()
                                 .background(Color.softPink)
                                 .cornerRadius(30)
                                 .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
+                                .miindFont(size: 50, weight: "black")
                             
                         }
                     }
@@ -69,22 +70,18 @@ struct MainView: View {
                     
                     NavigationLink(destination: CryView()) {
                         Text("CRY")
-                            .font(.title)
-                            .bold()
-                            .foregroundColor(.white)
                             .frame(width: 300, height: 75, alignment: .center)
                             .padding()
                             .background(Color.softPink)
                             .cornerRadius(30)
                             .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
+                            .miindFont(size: 50, weight: "black")
                     }
                     .padding()
                     
                     NavigationLink(destination: ThinkView()) {
                         Text("THINK")
-                            .font(.title)
-                            .bold()
-                            .foregroundColor(.white)
+                            .miindFont(size: 50, weight: "black", shadow: true)
                             .frame(width: 300, height: 75, alignment: .center)
                             .padding()
                             .background(Color.softPink)
