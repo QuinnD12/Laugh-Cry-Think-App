@@ -16,6 +16,7 @@
 		395F60C62B5994240020E4D1 /* LaughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395F60C52B5994240020E4D1 /* LaughView.swift */; };
 		395F60C82B59949A0020E4D1 /* YouTubeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */; };
 		3976C6472B61787800063F4F /* Nunito-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3976C6462B61787800063F4F /* Nunito-VariableFont_wght.ttf */; };
+		39B9DA072B695E06008C63FD /* CryViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B9DA062B695E06008C63FD /* CryViewTwo.swift */; };
 		E7FD18282B30A6CB00810B84 /* ThinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FD18272B30A6CB00810B84 /* ThinkView.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		395F60C52B5994240020E4D1 /* LaughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughView.swift; sourceTree = "<group>"; };
 		395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPI.swift; sourceTree = "<group>"; };
 		3976C6462B61787800063F4F /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		39B9DA062B695E06008C63FD /* CryViewTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryViewTwo.swift; sourceTree = "<group>"; };
 		E7FD18272B30A6CB00810B84 /* ThinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,8 +69,8 @@
 				390CCCF42B2B6B700083B338 /* LaughCryThinkApp.swift */,
 				395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */,
 				392D942A2B5ED7C900AC5C2E /* Styles.swift */,
+				39B9DA062B695E06008C63FD /* CryViewTwo.swift */,
 				390CCCF62B2B6B700083B338 /* ContentView.swift */,
-				BE6385AC2B5EDAB000F89452 /* CryView.swift */,
 				395F60C52B5994240020E4D1 /* LaughView.swift */,
 				E7FD18272B30A6CB00810B84 /* ThinkView.swift */,
 				390CCCF82B2B6B710083B338 /* Assets.xcassets */,
@@ -163,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7FD18282B30A6CB00810B84 /* ThinkView.swift in Sources */,
+				39B9DA072B695E06008C63FD /* CryViewTwo.swift in Sources */,
 				395F60C62B5994240020E4D1 /* LaughView.swift in Sources */,
 				390CCCF72B2B6B700083B338 /* ContentView.swift in Sources */,
 				395F60C82B59949A0020E4D1 /* YouTubeAPI.swift in Sources */,
