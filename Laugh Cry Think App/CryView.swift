@@ -4,39 +4,62 @@ struct CryView: View {
     
     @State private var poem: Poetry?
     @State private var crynotes = ""
+    
     var body: some View {
-        VStack(spacing: 20) {
-            ScrollView{
-                Text(poem?.title ?? "Poetry Lines Placeholder")
-                    .padding()
-                    .font(.system(size: 30))
-                Text(poem?.lines.joined(separator: "\n") ?? "Poetry Lines Placeholder")
-                    .padding()
-                    .border(.pink)
-                
-                Spacer()
-                
-            }
-            TextEditor(text: $crynotes)
-                            .foregroundStyle(.primary)
-                            .padding(.horizontal)
-                            .navigationTitle("About you")
-                            .border(.purple)
+        ZStack {
+            Color.pastelPurple.edgesIgnoringSafeArea(.all)
             
-        }
-        .padding()
-        .task {
-            do {
-                poem = try await getRandomPoetry()
-            } catch GHError.invalidURL {
-                print("Invalid URL")
-            } catch GHError.invalidResponse {
-                print("Invalid Response")
-            } catch GHError.invalidData {
-                print("Invalid Data")
-            } catch {
-                print("Unexpected error")
+            VStack(spacing: 20) {
+                ScrollView {
+                    if let poem = poem {
+                        Text(poem.title)
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.softPink)
+                            .cornerRadius(30)
+                            .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
+                            .padding(.horizontal)
+                        
+                        Text(poem.lines.joined(separator: "\n"))
+                            .bold()
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.softPink)
+                            .cornerRadius(30)
+                            .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
+                            .padding(.horizontal)
+                    } else {
+                        Text("Fetching poetry...")
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                }
+                
+                TextEditor(text: $crynotes)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity, maxHeight: 200)
+                    .background(Color.softPink)
+                    .cornerRadius(30)
+                    .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
+                    .padding(.horizontal)
             }
+            .padding()
+        }
+        .task {
+            await fetchRandomPoetry()
+        }
+    }
+    
+    func fetchRandomPoetry() async {
+        do {
+            poem = try await getRandomPoetry()
+        } catch {
+            print("Unexpected error: \(error)")
         }
     }
     
@@ -53,19 +76,15 @@ struct CryView: View {
             throw GHError.invalidResponse
         }
         
-        do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let poems = try decoder.decode([Poetry].self, from: data)
-            
-            if let randomPoem = poems.first {
-                return randomPoem
-            } else {
-                throw GHError.invalidData
-            }
-        } catch {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let poems = try decoder.decode([Poetry].self, from: data)
+        
+        guard let randomPoem = poems.first else {
             throw GHError.invalidData
         }
+        
+        return randomPoem
     }
 }
 
@@ -85,5 +104,3 @@ struct CryView_Previews: PreviewProvider {
         CryView()
     }
 }
-
- 

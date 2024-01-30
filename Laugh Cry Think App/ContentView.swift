@@ -67,7 +67,7 @@ struct MainView: View {
                     }
                     .padding()
                     
-                    NavigationLink(destination: ContentView()) {
+                    NavigationLink(destination: CryView()) {
                         Text("CRY")
                             .font(.title)
                             .bold()
@@ -80,7 +80,7 @@ struct MainView: View {
                     }
                     .padding()
                     
-                    NavigationLink(destination: ContentView()) {
+                    NavigationLink(destination: ThinkView()) {
                         Text("THINK")
                             .font(.title)
                             .bold()
