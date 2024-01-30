@@ -21,7 +21,7 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.pastelPurple
+                Color.white
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
@@ -29,7 +29,7 @@ struct MainView: View {
                         Triangle()
                             .fill(Color.softPink)
                             .frame(width: 100, height: 100)
-                            .shadow(color: Color.softBlue.opacity(0.4), radius: 5)
+                            .shadow(color: Color.black.opacity(0.5), radius: 4, x:-4)
                             .rotationEffect(.degrees(-90))
                         
                         Image("AppLogo")
@@ -39,13 +39,13 @@ struct MainView: View {
                             .overlay(
                                 Circle().stroke(Color.softPink, lineWidth: 3)
                             )
-                            .shadow(color: Color.white.opacity(0.5), radius: 3)
+                            .shadow(color: Color.black.opacity(0.3), radius: 3, y:5)
                             .padding()
                         
                         Triangle()
                             .fill(Color.softPink)
                             .frame(width: 100, height: 100)
-                            .shadow(color: Color.softBlue.opacity(0.4), radius: 5)
+                            .shadow(color: Color.black.opacity(0.5), radius: 4, x:4)
                             .rotationEffect(.degrees(90))
                     }
                     
@@ -56,37 +56,39 @@ struct MainView: View {
                     
                     NavigationLink(destination: LaughView()) {
                         HStack{
-                            Text("LAUGH")
+                            Text("laugh")
+                                .miindFont(size: 50, weight: "black", shadow:true)
                                 .frame(width: 300, height: 75, alignment: .center)
                                 .padding()
                                 .background(Color.softPink)
                                 .cornerRadius(30)
-                                .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
-                                .miindFont(size: 50, weight: "black")
+                                .shadow(color: Color.black.opacity(0.5), radius: 4, y:4)
+                                
                             
                         }
                     }
                     .padding()
                     
                     NavigationLink(destination: ContentView()) {
-                        Text("CRY")
+                        Text("cry")
+                            .miindFont(size: 50, weight: "black", shadow:true)
                             .frame(width: 300, height: 75, alignment: .center)
                             .padding()
                             .background(Color.softPink)
                             .cornerRadius(30)
-                            .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
-                            .miindFont(size: 50, weight: "black")
+                            .shadow(color: Color.black.opacity(0.5), radius: 4, y:4)
+                            
                     }
                     .padding()
                     
-                    NavigationLink(destination: ContentView()) {
-                        Text("THINK")
+                    NavigationLink(destination: ThinkView()) {
+                        Text("think")
                             .miindFont(size: 50, weight: "black", shadow: true)
                             .frame(width: 300, height: 75, alignment: .center)
                             .padding()
                             .background(Color.softPink)
                             .cornerRadius(30)
-                            .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
+                            .shadow(color: Color.black.opacity(0.5), radius: 4, y:4)
                     }
                     .padding()
                 }

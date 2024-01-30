@@ -1,10 +1,3 @@
-//
-//  ThinkView.swift
-//  Laugh Cry Think App
-//
-//  Created by Efe Ozalp on 12/18/23.
-//
-
 import SwiftUI
 import Combine
 
@@ -16,6 +9,7 @@ struct Quote: Codable {
 class QuoteViewModel: ObservableObject {
     @Published var quote: Quote?
     private var cancellables: Set<AnyCancellable> = []
+    
     func fetchRandomQuote() {
         guard let url = URL(string: "https://api.quotable.io/random") else { return }
         URLSession.shared.dataTaskPublisher(for: url)
@@ -28,36 +22,43 @@ class QuoteViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 }
+
 struct ThinkView: View {
     @ObservedObject private var quoteViewModel = QuoteViewModel()
     @State private var imageIndex = 1
+    
     var body: some View {
         ZStack {
-            Image("landscape\(imageIndex)")
-                .resizable()
-                .scaledToFill()
-                .opacity(0.3)
-                .edgesIgnoringSafeArea(.all)
-            VStack {
-                if let quote = quoteViewModel.quote {
-                    Text("\(quote.content)")
+            Color.pastelPurple.edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 20) {
+                VStack {
+                    Text(quoteViewModel.quote?.content ?? "...")
                         .font(.title3)
                         .bold()
-                        .lineLimit(nil)
-                        .frame(maxWidth: 200, maxHeight: 150, alignment: .center)
-                        .minimumScaleFactor(0.5)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity) // Allows the text to take up available width
+                        .minimumScaleFactor(0.5) // Adds the ability to scale down the text
                         .padding()
-                    Text("~ \(quote.author)")
+                        .background(Color.softPink)
+                        .cornerRadius(30)
+                        .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
                         .padding()
-                } else {
-                    Text("Fetching quote...")
+                    
+                    Text("~ \(quoteViewModel.quote?.author ?? "")")
+                        .foregroundColor(Color.white)
+                        .padding(.bottom, 20)
                 }
-                Button("Get Another Quote") {
-                    quoteViewModel.fetchRandomQuote()
-                    imageIndex = (imageIndex % 5) + 1
-                }
-                .padding()
+                
+                
+                Spacer()
+                
+                
             }
+        }
+        .onAppear {
+            quoteViewModel.fetchRandomQuote()
         }
     }
 }
@@ -67,3 +68,4 @@ struct ThinkView_Previews: PreviewProvider {
         ThinkView()
     }
 }
+
