@@ -37,11 +37,40 @@ extension View {
     }
 }
 
+//TODO Delete when done
+struct Background: View {
+    @State var anim = 0
+    
+    func Spiral(length: Int, f: (Double) -> [Double], start: CGPoint) -> some View {
+        Path { path in
+            path.move(to: start)
+            for l in 0..<length {
+                let x = start.x + Double(l)
+                let y = start.y + Double(l)
+                
+                path.addLine(to: CGPoint(x: x + f(x)[0], y: y + f(y)[1]))
+            }
+        }.stroke(lineWidth: 5.0)
+    }
+    
+    func f(t: Double) -> [Double] {
+        return [cos(t), sin(t)]
+    }
+    
+    var body: some View {
+        Spiral(length: anim, f: f, start: CGPoint(x: 0, y: 200))
+            .onAppear(perform: {
+                withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+                    anim = 100
+                }
+            })
+    }
+}
+
 struct Styles: View {
     var body: some View {
         ZStack {
-            Color(red: 0.01, green: 0.4, blue: 0.4)
-                .ignoresSafeArea()
+            Background()
             
             VStack {
                 Text("miind")
