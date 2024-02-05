@@ -58,7 +58,7 @@ struct MainView: View {
                         HStack{
                             Text("laugh")
                                 .miindFont(size: 50, weight: "black", shadow:true)
-                                .frame(width: 300, height: 75, alignment: .center)
+                                  .frame(width: 300, height: 75, alignment: .center)
                                 .padding()
                                 .background(Color.softPink)
                                 .cornerRadius(30)
@@ -69,7 +69,7 @@ struct MainView: View {
                     }
                     .padding()
                     
-                    NavigationLink(destination: ContentView()) {
+                    NavigationLink(destination: CryView()) {
                         Text("cry")
                             .miindFont(size: 50, weight: "black", shadow:true)
                             .frame(width: 300, height: 75, alignment: .center)
