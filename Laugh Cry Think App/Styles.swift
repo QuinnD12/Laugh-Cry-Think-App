@@ -51,14 +51,13 @@ struct Background: View {
     var anim: Bool = true
     let rand1 = Double.random(in: 0.1...1)
     let rand2 = Double.random(in: 0.1...1)
-    let rand3 = Int.random(in: 0...1) == 0 ? -1.0 : 1.0
     
     @State var colAnim1 = -25.0
     @State var colAnim2 = -25.0
     
     func f(_ t: Double) -> CGPoint {
         let x = cos(t)
-        let y = rand3 * ((round(rand2-0.2)/cos(t)) + sin(rand1*t))
+        let y = (round(rand2-0.2)/4*cos(t)) + sin(rand1*t)
         
         return CGPoint(x: (scalex*x)+xoff, y: (scaley*y)+yoff)
     }
@@ -86,10 +85,9 @@ struct Background: View {
             }.fill(Color(red: strokeCol[0] / 255, green: strokeCol[1] / 255, blue: strokeCol[2] / 255))
             .opacity(opac)
             .onAppear {
-                print("1:\(rand1), 2:\(rand2), 3:\(rand3)")
-                
                 if anim {
                     withAnimation(.easeInOut(duration: 6.5).repeatForever(autoreverses: true)) {
+                        print("1:\(rand1), 2:\(rand2)")
                         colAnim1 = 20
                         colAnim2 = 30
                     }
