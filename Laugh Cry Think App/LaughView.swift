@@ -15,20 +15,32 @@ struct LaughView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             Text("Laugh")
                 .font(.custom("Futura Bold", size: 70))
-            
             YouTubePlayerView(
                 YouTubePlayer(source: .video(id: placeHolderID ?? ""), configuration: .init(
                     loopEnabled: true
                 ))
             ).clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
-                .frame(width: 350, height: 500)
+                .frame(width: 350, height: 400)
             
-            TextField("Thoughts Placeholder", text: $laughText)
-                .frame(width: 350, height: 500)
-            
-            TextField("Thoughts Placeholder", text: $laughText)
+            ZStack(alignment: .topLeading) {
+                Rectangle()
+                    .foregroundColor(Color(.systemGray6))
+                    .frame(width: 350, height: 200)
+                    .cornerRadius(10)
+                    .shadow(color: .gray, radius: 3, x: 0, y: 2)
+                
+                TextEditor(text: $laughText)
+                    .frame(width: 342, height: 192)
+                    .padding(4)
+                    .background(Color.clear)
+                    .cornerRadius(10)
+            }
+            .padding() // Add padding around the ZStack to prevent shadow clipping
+
+
         }
     }
     }
