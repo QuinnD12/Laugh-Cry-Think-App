@@ -2,7 +2,12 @@ import SwiftUI
 import Combine
 
 struct Quote: Codable {
+    let _id: String
+    let authorSlug: String
     let content: String
+    let length: Int
+    let dateAdded: String
+    let dateModified: String
     let author: String
 }
 
