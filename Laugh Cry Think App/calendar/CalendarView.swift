@@ -14,20 +14,47 @@ struct CalendarView: View {
     var body: some View {
         
         VStack(spacing: 1){
-            Text("He")
+            DateView()
+                .environmentObject(dateHolder)
+                .padding()
             dayOftheWeek
         }
     }
     var dayOftheWeek: some View {
         HStack(spacing: 1) {
-            Text("Sun")
-            Text("Mon")
-            Text("Tue")
-            Text("Wed")
-            Text("Thu")
-            Text("Fri")
-            Text("Sat")
+            Text("Sun").dayOftheWeek()
+            Text("Mon").dayOftheWeek()
+            Text("Tue").dayOftheWeek()
+            Text("Wed").dayOftheWeek()
+            Text("Thu").dayOftheWeek()
+            Text("Fri").dayOftheWeek()
+            Text("Sat").dayOftheWeek()
         }
+    }
+    
+    var calendarDays: some View {
+    
+        VStack(spacing: 1) {
+            
+            let daysInMonth = CalendarHelper().daysInMonth(dateHolder.date)
+            let firstDayInMonth = CalendarHelper().firstOfMonth(dateHolder.date)
+            let startingSpaces = CalendarHelper().weekDay(firstDayInMonth)
+            let prevMonth = CalendarHelper().minusMonth(dateHolder.date)
+            let daysInPrevMonth = CalendarHelper().daysInMonth(prevMonth)
+            
+            ForEach(0..<6) {
+                row in HStack(spacing: 1) {
+                    ForEach(1..<8) {
+                        column in
+                        let count = column + (row * 7)
+                        calendarGrid(count: count, startingSpaces: startingSpaces, daysInMonth: daysInMonth, daysInPrevMonth: daysInPrevMonth)
+                            .environmentObject(dateHolder)
+
+                    }
+                }
+            }
+        }
+        .frame(height: .infinity)
     }
 }
 

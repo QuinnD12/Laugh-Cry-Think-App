@@ -105,8 +105,8 @@ struct ContentView: View {
                 .tabItem {
                     Label("Streak", systemImage: "flame.fill")
                 }
-            
-            Text("Calendar View")
+            CalendarView()
+           // Text("Calendar View")
                 .tabItem {
                     Label("Calendar", systemImage: "calendar")
                 }
