@@ -17,11 +17,6 @@
 		395F60C82B59949A0020E4D1 /* YouTubeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */; };
 		3976C6472B61787800063F4F /* Nunito-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3976C6462B61787800063F4F /* Nunito-VariableFont_wght.ttf */; };
 		39B9DA072B695E06008C63FD /* CryViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B9DA062B695E06008C63FD /* CryViewTwo.swift */; };
-		5E055E022B73EF6D00DF4D39 /* calendarGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E055E012B73EF6D00DF4D39 /* calendarGrid.swift */; };
-		5EF206D52B6C06AA00DBEBCA /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF206D42B6C06AA00DBEBCA /* CalendarView.swift */; };
-		5EF3BD5F2B71472F0076E885 /* classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BD5E2B71472F0076E885 /* classes.swift */; };
-		5EF3BD642B71498B0076E885 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BD632B71498B0076E885 /* DateView.swift */; };
-		5EF3BD662B714D4D0076E885 /* scroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BD652B714D4D0076E885 /* scroller.swift */; };
 		E7FD18282B30A6CB00810B84 /* ThinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FD18272B30A6CB00810B84 /* ThinkView.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,11 +31,6 @@
 		395F60C72B59949A0020E4D1 /* YouTubeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPI.swift; sourceTree = "<group>"; };
 		3976C6462B61787800063F4F /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		39B9DA062B695E06008C63FD /* CryViewTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryViewTwo.swift; sourceTree = "<group>"; };
-		5E055E012B73EF6D00DF4D39 /* calendarGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarGrid.swift; sourceTree = "<group>"; };
-		5EF206D42B6C06AA00DBEBCA /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		5EF3BD5E2B71472F0076E885 /* classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classes.swift; sourceTree = "<group>"; };
-		5EF3BD632B71498B0076E885 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
-		5EF3BD652B714D4D0076E885 /* scroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scroller.swift; sourceTree = "<group>"; };
 		E7FD18272B30A6CB00810B84 /* ThinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +73,6 @@
 				390CCCF62B2B6B700083B338 /* ContentView.swift */,
 				395F60C52B5994240020E4D1 /* LaughView.swift */,
 				E7FD18272B30A6CB00810B84 /* ThinkView.swift */,
-				5EF3BD602B7148900076E885 /* calendar */,
 				390CCCF82B2B6B710083B338 /* Assets.xcassets */,
 				390CCCFA2B2B6B710083B338 /* Preview Content */,
 			);
@@ -96,18 +85,6 @@
 				390CCCFB2B2B6B710083B338 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		5EF3BD602B7148900076E885 /* calendar */ = {
-			isa = PBXGroup;
-			children = (
-				5EF3BD5E2B71472F0076E885 /* classes.swift */,
-				5EF3BD632B71498B0076E885 /* DateView.swift */,
-				5EF3BD652B714D4D0076E885 /* scroller.swift */,
-				5EF206D42B6C06AA00DBEBCA /* CalendarView.swift */,
-				5E055E012B73EF6D00DF4D39 /* calendarGrid.swift */,
-			);
-			path = calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,17 +164,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EF3BD642B71498B0076E885 /* DateView.swift in Sources */,
 				E7FD18282B30A6CB00810B84 /* ThinkView.swift in Sources */,
-				5EF3BD662B714D4D0076E885 /* scroller.swift in Sources */,
 				39B9DA072B695E06008C63FD /* CryViewTwo.swift in Sources */,
-				5EF206D52B6C06AA00DBEBCA /* CalendarView.swift in Sources */,
 				395F60C62B5994240020E4D1 /* LaughView.swift in Sources */,
 				390CCCF72B2B6B700083B338 /* ContentView.swift in Sources */,
 				395F60C82B59949A0020E4D1 /* YouTubeAPI.swift in Sources */,
 				392D942B2B5ED7C900AC5C2E /* Styles.swift in Sources */,
-				5E055E022B73EF6D00DF4D39 /* calendarGrid.swift in Sources */,
-				5EF3BD5F2B71472F0076E885 /* classes.swift in Sources */,
 				390CCCF52B2B6B700083B338 /* LaughCryThinkApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
