@@ -64,8 +64,7 @@ struct CalendarView: View {
             .padding()
             
             Divider()
-            
-            // Days of the week header
+
             let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
             HStack {
                 ForEach(daysOfWeek, id: \.self) { day in
@@ -75,7 +74,6 @@ struct CalendarView: View {
                 }
             }
             
-            // Days grid
             let columns = Array(repeating: GridItem(.flexible()), count: 7)
             LazyVGrid(columns: columns, spacing: 10) {
                 ForEach(0..<42, id: \.self) { index in
@@ -113,7 +111,6 @@ struct MainView: View {
             ZStack {
                 Color.white
                     .edgesIgnoringSafeArea(.all)
-                
                 VStack {
                     HStack {
                         Triangle()
@@ -140,7 +137,7 @@ struct MainView: View {
                     }
                     
                     Text("January 11, 2024")
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .bold()
                         .miindFont(size: 20, weight: "bold")
                     
