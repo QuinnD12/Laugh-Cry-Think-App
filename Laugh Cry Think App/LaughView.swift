@@ -9,21 +9,24 @@ import SwiftUI
 import YouTubePlayerKit
 
 struct LaughView: View {
-    //@AppStorage("YTLinks") var YTLinks: [String : String] = ["2022-05-01T12:00:00-05:00": "NpEaa2P7qZI"]
     @State var laughText = ""
-    var placeHolderID: String? = "NpEaa2P7qZI"
+    @State var videoID: String? = nil//"GqGAtcovxVE"
+    @State var reload = false
     
     var body: some View {
         VStack {
             Spacer()
             Text("Laugh")
                 .font(.custom("Futura Bold", size: 70))
-            YouTubePlayerView(
-                YouTubePlayer(source: .video(id: placeHolderID ?? ""), configuration: .init(
-                    loopEnabled: true
-                ))
-            ).clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
-                .frame(width: 350, height: 400)
+            
+            if reload {
+                YouTubePlayerView(
+                    YouTubePlayer(source: .video(id: videoID ?? ""), configuration: .init(
+                        loopEnabled: true
+                    ))
+                ).clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
+                    .frame(width: 350, height: 400)
+            }
             
             ZStack(alignment: .topLeading) {
                 Rectangle()
@@ -40,11 +43,13 @@ struct LaughView: View {
             }
             .padding() // Add padding around the ZStack to prevent shadow clipping
 
-
+        }.onAppear {
+            videoID = APIManager.retrieve().grab(date: todayFormat()).llink.items[0].id.videoId
+            
+            reload = true
         }
     }
-    }
-
+}
 
 
 struct LaughViewPreviews: PreviewProvider {

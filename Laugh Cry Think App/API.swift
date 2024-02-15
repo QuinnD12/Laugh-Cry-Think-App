@@ -9,12 +9,12 @@ import SwiftUI
 import YouTubePlayerKit
 
 struct APIData: Codable {
-    private var data: [String: APIContainer] = ["": APIContainer()]
+    /*private*/ var data: [String: APIContainer] = ["": APIContainer()]
     
-    mutating func add(date: Date = Date.now, tlink: String, clink: String, llink: String) {
+    mutating func add(date: Date = Date.now, tlink: Quote, clink: Poetry, llink: Response) {
         let DateFormat = DateFormatter()
         DateFormat.dateFormat = "MM/dd/yyyy"
-        var fdate = DateFormat.string(from: date)
+        let fdate = DateFormat.string(from: date)
         
         data[fdate] = APIContainer(tlink: tlink, clink: clink, llink: llink)
     }
@@ -29,9 +29,9 @@ struct APIData: Codable {
 }
 
 struct APIContainer: Codable {
-    var tlink: String = ""
-    var clink: String = ""
-    var llink: String = ""
+    var tlink: Quote = Quote(_id: "", authorSlug: "", content: "", length: 0, dateAdded: "", dateModified: "", author: "")
+    var clink: Poetry = Poetry(title: "", lines: [""])
+    var llink: Response = Response(kind: "", etag: "", nextPageToken: "", prevPageToken: "", regionCode: "", pageInfo: PageInfo(totalResults: 0, resultsPerPage: 0), items: [Item(kind: "", etag: "", id: Id(kind: "", videoId: ""))])
 }
 
 struct APIManager {
@@ -55,7 +55,19 @@ struct APIManager {
         return APIData()
     }
     
-    static func getVideoID(APIKey: String = "AIzaSyDEu0gqC_zfELf-iGhsmfiH1IZ_KD73Vng") async throws -> String {
+    static func verify(_ saveDate: String) -> Bool {
+        let DateFormat = DateFormatter()
+        DateFormat.dateFormat = "MM/dd/yyyy"
+        let fdate = DateFormat.string(from: Date.now.addingTimeInterval(86400))
+        
+        if saveDate == fdate {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    static func getVideoID(APIKey: String = "AIzaSyDEu0gqC_zfELf-iGhsmfiH1IZ_KD73Vng") async throws -> Response {
         
         let date = randRangeDate(startDate: "2022-05-01T12:00:00-05:00", endDate: "2024-01-08T12:00:00-05:00")
         
@@ -74,9 +86,10 @@ struct APIManager {
         do {
             let decoder = JSONDecoder()
             
-            let items = try decoder.decode(Response.self, from: data).items
-            if items.count > 0 {
-                return items[0].id.videoId
+            let response = try decoder.decode(Response.self, from: data)
+            
+            if response.items.count > 0 {
+                return response
             } else {
                 return try await getVideoID()
             }
@@ -129,42 +142,6 @@ struct APIManager {
         return quote
     }
 }
-
-struct YouTubeTestView: View {
-    @State var videoID: String? = nil
-    @State var done = false
-    
-    var body: some View {
-        Button("Load") {
-            Task {
-                do {
-                    try await print(APIManager.getRandomQuote().content)
-                    //videoID = try await APIManager.getVideoID()
-                    done.toggle()
-                } catch NetworkError.invalidURL {
-                    print("Invalid URL")
-                } catch NetworkError.invalidResponse {
-                    print("Invalid Response/Quota")
-                } catch NetworkError.invalidData {
-                    print("Invalid Data")
-                } catch {
-                    print("Unknown Error/Connection")
-                }
-            }
-        }
-        
-        if done {
-            YouTubePlayerView(
-                YouTubePlayer(source: .video(id: videoID ?? ""), configuration: .init(
-                    loopEnabled: true
-                ))
-            )
-        }
-    }
-}
-
-
-
 enum NetworkError: Error {
     case invalidURL
     case invalidResponse
@@ -197,6 +174,21 @@ struct Id: Codable {
     let videoId: String
 }
 
+struct Quote: Codable {
+    let _id: String
+    let authorSlug: String
+    let content: String
+    let length: Int
+    let dateAdded: String
+    let dateModified: String
+    let author: String
+}
+
+struct Poetry: Codable {
+    let title: String
+    let lines: [String]
+}
+
 func randRangeDate(startDate: String, endDate: String) -> String {
     let RFC3339DateFormatter = DateFormatter()
     RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -227,8 +219,10 @@ func timeAhead(_ date: String) -> String {
     return RFC3339DateFormatter.string(from: dateRFC3339!)
 }
 
-#Preview {
-    YouTubeTestView()
+func todayFormat() -> String {
+    let DateFormat = DateFormatter()
+    DateFormat.dateFormat = "MM/dd/yyyy"
+     return DateFormat.string(from: Date.now)
 }
 
 

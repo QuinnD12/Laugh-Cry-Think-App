@@ -1,36 +1,8 @@
 import SwiftUI
-import Combine
-
-struct Quote: Codable {
-    let _id: String
-    let authorSlug: String
-    let content: String
-    let length: Int
-    let dateAdded: String
-    let dateModified: String
-    let author: String
-}
-
-class QuoteViewModel: ObservableObject {
-    @Published var quote: Quote?
-    private var cancellables: Set<AnyCancellable> = []
-    
-    func fetchRandomQuote() {
-        guard let url = URL(string: "https://api.quotable.io/random") else { return }
-        URLSession.shared.dataTaskPublisher(for: url)
-            .map(\.data)
-            .decode(type: Quote.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] quote in
-                self?.quote = quote
-            })
-            .store(in: &cancellables)
-    }
-}
 
 struct ThinkView: View {
-    @ObservedObject private var quoteViewModel = QuoteViewModel()
     @State private var imageIndex = 1
+    @State var output: Quote? = nil
     
     var body: some View {
         ZStack {
@@ -38,7 +10,7 @@ struct ThinkView: View {
             
             VStack(spacing: 20) {
                 VStack {
-                    Text(quoteViewModel.quote?.content ?? "...")
+                    Text(output?.content ?? "...")
                         .font(.title3)
                         .bold()
                         .foregroundColor(.white)
@@ -51,19 +23,16 @@ struct ThinkView: View {
                         .shadow(color: Color.softBlue.opacity(0.3), radius: 10)
                         .padding()
                     
-                    Text("~ \(quoteViewModel.quote?.author ?? "")")
+                    Text("~ \(output?.authorSlug ?? "")")
                         .foregroundColor(Color.white)
                         .padding(.bottom, 20)
                 }
                 
-                
                 Spacer()
-                
-                
             }
         }
         .onAppear {
-            quoteViewModel.fetchRandomQuote()
+            output = APIManager.retrieve().grab(date: todayFormat()).tlink
         }
     }
 }

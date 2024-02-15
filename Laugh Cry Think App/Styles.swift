@@ -37,6 +37,23 @@ extension View {
     }
 }
 
+extension Color {
+    static let pastelPurple = Color(red: 206/255, green: 156/255, blue: 236/255)
+    static let softBlue = Color(red: 100/255, green: 149/255, blue: 237/255)
+    static let softPink = Color(red: 226 / 255, green: 197 / 255, blue: 222 / 255)
+}
+
+
+struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.closeSubpath()
+        return path
+    }
+}
 
 struct Background: View {
     var scalex: Double = 500
