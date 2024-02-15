@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct ThinkView: View {
-    @State private var imageIndex = 1
+    var date: String = todayFormat()
+    
     @State var output: Quote? = nil
     
     var body: some View {
@@ -32,7 +33,7 @@ struct ThinkView: View {
             }
         }
         .onAppear {
-            output = APIManager.retrieve().grab(date: todayFormat()).tlink
+            output = APIManager.retrieve().grab(date: date).tlink
         }
     }
 }

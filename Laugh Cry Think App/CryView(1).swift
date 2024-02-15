@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct CryView: View {
+    var date: String = todayFormat()
+    
     @State private var poem: Poetry?
     @State private var crynotes = ""
     
@@ -50,7 +52,7 @@ struct CryView: View {
             .padding()
         }
         .onAppear {
-            poem = APIManager.retrieve().grab(date: todayFormat()).clink
+            poem = APIManager.retrieve().grab(date: date).clink
         }
     }
 }

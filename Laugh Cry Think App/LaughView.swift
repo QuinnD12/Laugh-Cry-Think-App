@@ -9,6 +9,8 @@ import SwiftUI
 import YouTubePlayerKit
 
 struct LaughView: View {
+    var date: String = todayFormat()
+    
     @State var laughText = ""
     @State var videoID: String? = nil//"GqGAtcovxVE"
     @State var reload = false
@@ -44,7 +46,7 @@ struct LaughView: View {
             .padding() // Add padding around the ZStack to prevent shadow clipping
 
         }.onAppear {
-            videoID = APIManager.retrieve().grab(date: todayFormat()).llink.items[0].id.videoId
+            videoID = APIManager.retrieve().grab(date: date).llink.items[0].id.videoId
             
             reload = true
         }

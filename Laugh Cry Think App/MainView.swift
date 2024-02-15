@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    var date: String = todayFormat()
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -15,11 +17,15 @@ struct MainView: View {
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
-                        Triangle()
-                            .fill(Color.softPink)
-                            .frame(width: 100, height: 100)
-                            .shadow(color: Color.black.opacity(0.5), radius: 4, x:-4)
-                            .rotationEffect(.degrees(-90))
+                        NavigationLink {
+                            MainView(date: todayFormat(-86400))
+                        } label: {
+                            Triangle()
+                                .fill(Color.softPink)
+                                .frame(width: 100, height: 100)
+                                .shadow(color: Color.black.opacity(0.5), radius: 4, x:-4)
+                                .rotationEffect(.degrees(-90))
+                        }
                         
                         Image("AppLogo")
                             .resizable()
@@ -31,19 +37,23 @@ struct MainView: View {
                             .shadow(color: Color.black.opacity(0.3), radius: 3, y:5)
                             .padding()
                         
-                        Triangle()
-                            .fill(Color.softPink)
-                            .frame(width: 100, height: 100)
-                            .shadow(color: Color.black.opacity(0.5), radius: 4, x:4)
-                            .rotationEffect(.degrees(90))
+                        NavigationLink {
+                            MainView(date: todayFormat(86400))
+                        } label: {
+                            Triangle()
+                                .fill(Color.softPink)
+                                .frame(width: 100, height: 100)
+                                .shadow(color: Color.black.opacity(0.5), radius: 4, x:-4)
+                                .rotationEffect(.degrees(-90))
+                        }
                     }
                     
-                    Text("January 11, 2024")
+                    Text(date + " (can change format?)")
                         .foregroundColor(.black)
                         .bold()
                         .miindFont(size: 20, weight: "bold")
                     
-                    NavigationLink(destination: LaughView()) {
+                    NavigationLink(destination: LaughView(date: date)) {
                         HStack{
                             Text("laugh")
                                 .miindFont(size: 50, weight: "black", shadow:true)
@@ -58,7 +68,7 @@ struct MainView: View {
                     }
                     .padding()
                     
-                    NavigationLink(destination: CryView()) {
+                    NavigationLink(destination: CryView(date: date)) {
                         Text("cry")
                             .miindFont(size: 50, weight: "black", shadow:true)
                             .frame(width: 300, height: 75, alignment: .center)
@@ -70,7 +80,7 @@ struct MainView: View {
                     }
                     .padding()
                     
-                    NavigationLink(destination: ThinkView()) {
+                    NavigationLink(destination: ThinkView(date: date)) {
                         Text("think")
                             .miindFont(size: 50, weight: "black", shadow: true)
                             .frame(width: 300, height: 75, alignment: .center)

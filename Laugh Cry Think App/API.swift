@@ -219,11 +219,10 @@ func timeAhead(_ date: String) -> String {
     return RFC3339DateFormatter.string(from: dateRFC3339!)
 }
 
-func todayFormat() -> String {
+func todayFormat(_ sec: Double = 0) -> String {
     let DateFormat = DateFormatter()
     DateFormat.dateFormat = "MM/dd/yyyy"
-     return DateFormat.string(from: Date.now)
+    return DateFormat.string(from: Date.now.addingTimeInterval(sec))
 }
-
 
 
