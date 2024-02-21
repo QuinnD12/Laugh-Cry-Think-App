@@ -7,8 +7,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("saveDate") var saveDate: String = ""
-    
     var body: some View {
         TabView {
             CalendarView()
@@ -25,20 +23,6 @@ struct ContentView: View {
                 .tabItem {
                     Label("About", systemImage: "info.circle")
                 }
-        }.onAppear {
-            if APIManager.verify(saveDate) {
-                saveDate = todayFormat()
-
-                var data = APIData()
-                Task {
-                    try await data.add(tlink: APIManager.getRandomQuote()
-                    , clink: APIManager.getRandomPoetry()
-                    , llink: APIManager.getVideoID()
-                    )
-                    
-                    APIManager.save(data: data)
-                }
-            }
         }
     }
 }

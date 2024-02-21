@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     var date: String = todayFormat()
+    @AppStorage("saveDate") var saveDate: String = ""
     
     var body: some View {
         NavigationView {
@@ -18,7 +19,7 @@ struct MainView: View {
                 VStack {
                     HStack {
                         NavigationLink {
-                            MainView(date: todayFormat(-86400))
+                            MainView(date: dateFormat(date, -86400)).navigationBarBackButtonHidden(true)
                         } label: {
                             Triangle()
                                 .fill(Color.softPink)
@@ -38,13 +39,13 @@ struct MainView: View {
                             .padding()
                         
                         NavigationLink {
-                            MainView(date: todayFormat(86400))
+                            MainView(date: dateFormat(date, 86400)).navigationBarBackButtonHidden(true)
                         } label: {
                             Triangle()
                                 .fill(Color.softPink)
                                 .frame(width: 100, height: 100)
                                 .shadow(color: Color.black.opacity(0.5), radius: 4, x:-4)
-                                .rotationEffect(.degrees(-90))
+                                .rotationEffect(.degrees(90))
                         }
                     }
                     
@@ -53,7 +54,7 @@ struct MainView: View {
                         .bold()
                         .miindFont(size: 20, weight: "bold")
                     
-                    NavigationLink(destination: LaughView(date: date)) {
+                    NavigationLink(destination: LaughView(date: date).toolbarRole(.editor)) {
                         HStack{
                             Text("laugh")
                                 .miindFont(size: 50, weight: "black", shadow:true)
@@ -68,7 +69,7 @@ struct MainView: View {
                     }
                     .padding()
                     
-                    NavigationLink(destination: CryView(date: date)) {
+                    NavigationLink(destination: CryView(date: date).toolbarRole(.editor)) {
                         Text("cry")
                             .miindFont(size: 50, weight: "black", shadow:true)
                             .frame(width: 300, height: 75, alignment: .center)
@@ -80,7 +81,7 @@ struct MainView: View {
                     }
                     .padding()
                     
-                    NavigationLink(destination: ThinkView(date: date)) {
+                    NavigationLink(destination: ThinkView(date: date).toolbarRole(.editor)) {
                         Text("think")
                             .miindFont(size: 50, weight: "black", shadow: true)
                             .frame(width: 300, height: 75, alignment: .center)
@@ -93,6 +94,24 @@ struct MainView: View {
                 }
                 .padding()
             }
+        }.onAppear {
+            if APIManager.verify(saveDate) {
+                saveDate = todayFormat()
+
+                var data = APIData()
+                Task {
+                    try await data.add(tlink: APIManager.getRandomQuote()
+                    , clink: APIManager.getRandomPoetry()
+                    , llink: APIManager.getVideoID()
+                    )
+                    
+                    APIManager.save(data: data)
+                }
+            }
         }
     }
+}
+
+#Preview {
+    MainView()
 }
