@@ -46,9 +46,11 @@ struct LaughView: View {
             .padding() // Add padding around the ZStack to prevent shadow clipping
 
         }.onAppear {
-            videoID = APIManager.retrieve().grab(date: date).llink.items[0].id.videoId
-            
-            reload = true
+            Task {
+                videoID = try await APIManager.retrieve().grab(date: date).llink.items[0].id.videoId
+                
+                reload = true
+            }
         }
     }
 }

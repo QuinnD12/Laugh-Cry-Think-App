@@ -95,7 +95,7 @@ struct MainView: View {
                 .padding()
             }
         }.onAppear {
-            if APIManager.verify(saveDate) {
+            if saveDate != todayFormat() {
                 saveDate = todayFormat()
 
                 var data = APIData()

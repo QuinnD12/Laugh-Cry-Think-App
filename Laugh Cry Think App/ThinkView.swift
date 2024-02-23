@@ -49,7 +49,9 @@ struct ThinkView: View {
             }
         }
         .onAppear {
-            output = APIManager.retrieve().grab(date: date).tlink
+            Task {
+                output = try await APIManager.retrieve().grab(date: date).tlink
+            }
         }
     }
 }

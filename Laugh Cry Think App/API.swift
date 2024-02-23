@@ -9,18 +9,40 @@ import SwiftUI
 import YouTubePlayerKit
 
 struct APIData: Codable {
-    /*private*/ var data: [String: APIContainer] = ["": APIContainer()]
+    private var data: [String: APIContainer] = ["": APIContainer()]
     
-    mutating func add(date: Date = Date.now, tlink: Quote, clink: Poetry, llink: Response) {
-        let DateFormat = DateFormatter()
-        DateFormat.dateFormat = "MM/dd/yyyy"
-        let fdate = DateFormat.string(from: date)
-        
-        data[fdate] = APIContainer(tlink: tlink, clink: clink, llink: llink)
+    mutating func add(date: String = todayFormat(), tlink: Quote, clink: Poetry, llink: Response) {
+        data[date] = APIContainer(tlink: tlink, clink: clink, llink: llink)
     }
     
-    func grab(date: String) -> APIContainer {
-        return data[date] ?? APIContainer()
+    func grab(date: String) async throws -> APIContainer {
+        if let _ = data[date] {
+            return data[date]!
+        } else {
+
+            var newdata = APIData()
+            
+            do {
+                try await newdata.add(date: date, tlink: APIManager.getRandomQuote()
+                                  , clink: APIManager.getRandomPoetry()
+                                  , llink: APIManager.getVideoID())
+            } catch NetworkError.invalidData {
+                    print("data")
+                }
+            catch NetworkError.invalidResponse {
+                print("response")
+            }
+            catch NetworkError.invalidURL {
+                    print("url")
+            }
+            catch {
+                print("un")
+            }
+
+            APIManager.save(data: newdata)
+
+            return try await APIManager.retrieve().grab(date: date)
+        }
     }
     
     enum CodingKeys: String, CodingKey {
@@ -54,19 +76,7 @@ struct APIManager {
         
         return APIData()
     }
-    
-    static func verify(_ saveDate: String) -> Bool {
-        let DateFormat = DateFormatter()
-        DateFormat.dateFormat = "MM/dd/yyyy"
-        let fdate = DateFormat.string(from: Date.now.addingTimeInterval(86400))
-        
-        if saveDate == fdate {
-            return false
-        } else {
-            return true
-        }
-    }
-    
+
     static func getVideoID(APIKey: String = "AIzaSyDEu0gqC_zfELf-iGhsmfiH1IZ_KD73Vng") async throws -> Response {
         
         let date = randRangeDate(startDate: "2022-05-01T12:00:00-05:00", endDate: "2024-01-08T12:00:00-05:00")

@@ -17,7 +17,7 @@ struct ContentView: View {
             MainView()
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
-            }
+                }
             
             Text("About View")
                 .tabItem {
