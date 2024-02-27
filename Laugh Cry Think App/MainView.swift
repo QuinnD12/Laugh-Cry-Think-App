@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct MainView: View {
-    var date: String = todayFormat()
     @AppStorage("saveDate") var saveDate: String = ""
+    var date: String = todayFormat()
+    
+    init(date: String = todayFormat()) {
+        UINavigationBar.setAnimationsEnabled(false)
+        self.date = date
+    }
     
     var body: some View {
         NavigationView {
