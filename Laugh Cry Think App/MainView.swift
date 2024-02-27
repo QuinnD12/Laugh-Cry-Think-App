@@ -98,7 +98,7 @@ struct MainView: View {
             if saveDate != todayFormat() {
                 saveDate = todayFormat()
 
-                var data = APIData()
+                var data = APIManager.retrieve()
                 Task {
                     try await data.add(tlink: APIManager.getRandomQuote()
                     , clink: APIManager.getRandomPoetry()

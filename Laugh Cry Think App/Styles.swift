@@ -104,7 +104,6 @@ struct Background: View {
             .onAppear {
                 if anim {
                     withAnimation(.easeInOut(duration: 6.5).repeatForever(autoreverses: true)) {
-                        print("1:\(rand1), 2:\(rand2)")
                         colAnim1 = 20
                         colAnim2 = 30
                     }

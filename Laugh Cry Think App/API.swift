@@ -16,11 +16,10 @@ struct APIData: Codable {
     }
     
     func grab(date: String) async throws -> APIContainer {
-        if let _ = data[date] {
-            return data[date]!
+        if let d = data[date] {
+            return d
         } else {
-
-            var newdata = APIData()
+            var newdata = APIManager.retrieve()
             
             do {
                 try await newdata.add(date: date, tlink: APIManager.getRandomQuote()
@@ -41,7 +40,7 @@ struct APIData: Codable {
 
             APIManager.save(data: newdata)
 
-            return try await APIManager.retrieve().grab(date: date)
+            return newdata.data[date] ?? APIContainer()
         }
     }
     

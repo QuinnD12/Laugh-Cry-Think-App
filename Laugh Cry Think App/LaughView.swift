@@ -12,7 +12,7 @@ struct LaughView: View {
     var date: String = todayFormat()
     
     @State var laughText = ""
-    @State var videoID: String? = nil//"GqGAtcovxVE"
+    @State var videoID: String? = nil
     @State var reload = false
     
     var body: some View {
