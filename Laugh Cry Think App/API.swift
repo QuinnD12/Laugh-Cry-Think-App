@@ -10,19 +10,24 @@ import YouTubePlayerKit
 
 struct APIData: Codable {
     private var data: [String: APIContainer] = ["": APIContainer()]
+    private var notes: [String: NotesContainer] = ["": NotesContainer()]
     
-    mutating func add(date: String = todayFormat(), tlink: Quote, clink: Poetry, llink: Response) {
+    mutating func addAPI(date: String = todayFormat(), tlink: Quote, clink: Poetry, llink: Response) {
         data[date] = APIContainer(tlink: tlink, clink: clink, llink: llink)
     }
     
-    func grab(date: String) async throws -> APIContainer {
+    mutating func addNotes(date: String, tnotes: String, cnotes: String, lnotes: String) {
+        notes[date] = NotesContainer(tnotes: tnotes, cnotes: cnotes, lnotes: lnotes)
+    }
+    
+    func grabAPI(date: String) async throws -> APIContainer {
         if let d = data[date] {
             return d
         } else {
             var newdata = APIManager.retrieve()
             
             do {
-                try await newdata.add(date: date, tlink: APIManager.getRandomQuote()
+                try await newdata.addAPI(date: date, tlink: APIManager.getRandomQuote()
                                   , clink: APIManager.getRandomPoetry()
                                   , llink: APIManager.getVideoID())
             } catch NetworkError.invalidData {
@@ -44,8 +49,12 @@ struct APIData: Codable {
         }
     }
     
+    func grabNotes(date: String) -> NotesContainer {
+        return notes[date] ?? NotesContainer()
+    }
+    
     enum CodingKeys: String, CodingKey {
-        case data
+        case data, notes
     }
 }
 
@@ -53,6 +62,12 @@ struct APIContainer: Codable {
     var tlink: Quote = Quote(_id: "", authorSlug: "", content: "", length: 0, dateAdded: "", dateModified: "", author: "")
     var clink: Poetry = Poetry(title: "", lines: [""])
     var llink: Response = Response(kind: "", etag: "", nextPageToken: "", prevPageToken: "", regionCode: "", pageInfo: PageInfo(totalResults: 0, resultsPerPage: 0), items: [Item(kind: "", etag: "", id: Id(kind: "", videoId: ""))])
+}
+
+struct NotesContainer: Codable {
+    var tnotes: String = ""
+    var cnotes: String = ""
+    var lnotes: String = ""
 }
 
 struct APIManager {

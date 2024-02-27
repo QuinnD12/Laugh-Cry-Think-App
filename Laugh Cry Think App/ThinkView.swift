@@ -50,7 +50,7 @@ struct ThinkView: View {
         }
         .onAppear {
             Task {
-                output = try await APIManager.retrieve().grab(date: date).tlink
+                output = try await APIManager.retrieve().grabAPI(date: date).tlink
             }
         }
     }

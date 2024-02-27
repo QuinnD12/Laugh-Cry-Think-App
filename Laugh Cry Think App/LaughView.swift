@@ -47,7 +47,7 @@ struct LaughView: View {
 
         }.onAppear {
             Task {
-                videoID = try await APIManager.retrieve().grab(date: date).llink.items[0].id.videoId
+                videoID = try await APIManager.retrieve().grabAPI(date: date).llink.items[0].id.videoId
                 
                 reload = true
             }

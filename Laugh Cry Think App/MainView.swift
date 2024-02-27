@@ -105,7 +105,7 @@ struct MainView: View {
 
                 var data = APIManager.retrieve()
                 Task {
-                    try await data.add(tlink: APIManager.getRandomQuote()
+                    try await data.addAPI(tlink: APIManager.getRandomQuote()
                     , clink: APIManager.getRandomPoetry()
                     , llink: APIManager.getVideoID()
                     )

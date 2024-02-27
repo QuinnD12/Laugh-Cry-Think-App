@@ -59,7 +59,7 @@ struct CryView: View {
         }
         .onAppear {
             Task {
-                poem = try await APIManager.retrieve().grab(date: date).clink
+                poem = try await APIManager.retrieve().grabAPI(date: date).clink
             }
         }
     }
