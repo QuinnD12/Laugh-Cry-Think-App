@@ -54,7 +54,7 @@ struct MainView: View {
                         }
                     }
                     
-                    Text(date + " (can change format?)")
+                    Text(date)
                         .foregroundColor(.black)
                         .bold()
                         .miindFont(size: 20, weight: "bold")
